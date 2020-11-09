@@ -9,10 +9,9 @@ The instructions and code are set up so that you can work through this in your o
 **Objectives of this tutorial:**
 
 * Install and set up R and RStudio
-* Create a new R project and load packages
-* Import data files
+* Import and explore a data file
 * Perform some simple statistical analyses
-* Create some plots
+* Create some cool plots
 
 
 *** 
@@ -21,7 +20,7 @@ The instructions and code are set up so that you can work through this in your o
 
 
 
-#### 1.1 Installation
+#### 1.1 Install programmes
 
 
 To get started you will need the following software installed on your computer: [R](https://www.r-project.org) and [RStudio](https://www.rstudio.com), a helpful editor and tool that keeps everything neat:
@@ -43,7 +42,7 @@ You can change the arrangement of these panes as well as choose a colourful them
 
 
 
-#### 1.2. Set up a new RStudio project
+#### 1.2. Set up a new R Project
 
 In RStudio, you can [create 'projects'](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects) to help keep everything neat and tidy. This is especially useful if you are working on more than one research project at a time (and perhaps want to use version control), but is still generally good practice for keeping your files, code, etc. organised.
 
@@ -52,20 +51,30 @@ To set up a new RStudio project (.Rproj):
 1. Select _File > New Project..._
 2. Create a project from a _New Directory_ (following this, select _New Project_ if promopted)
 3. Give the directory a name and place it in a convenient place (Desktop is fine for now!)
-4. Click _Create project_ 
-5. This creates a new project file (.Rproj) within a project directory (i.e. a folder)
+4. Click _Create project_  - this creates a new project file (.Rproj) within a project directory (i.e. a folder)
 
 
-To keep everything organised, we'll set up some sub-folders within the project directory (folder) you've just created above. Leave RStudio and navigate to where you have just saved your project file to. Open the folder - you'll see a _.Rproj_ file - and within this folder, create 3 new sub-folders as shown below: datasets, scripts, and plots.
+To keep everything organised, we'll create some sub-folders within the project directory (folder) you've just created above: one for datasets, one for script files (code) and another for the plots we create.
+
+At the top of this page, you'll see a green button that says _Code_. Click on this and then choose _Download ZIP_, which will download a ZIP folder of all the files:
+
+![](./images/download.png)
+
+Once downloaded, navigate to the ZIP folder and copy both the _datasets_ folder (containing a .csv file) and the _code_ folder (containing four scipt files), and paste these directly into the project directly you created above. 
+Finally, you'll need to create a empty _plots_ folder. Your project directly should now look similar to this:
+
 
 ![](./images/subfolders.png)
 
 
 
+
 #### 1.3. Installing and loading packages
 
-R packages are a collection of functions, typically used for a specific purpose, such as phylogenetic analysis, advanced modelling, etc. In this tutorial we're going to use functions from _base R_ (i.e. R without any additional packages), but sometimes we will use coding syntax from a package called _tidyverse_ and will use the graphics package _ggplot2_ to create our plots. Conveniently, _ggplot2_ is included in the _tidyverse_ package, so we just need to install and load a single package. You can does this either by using the menu bar or by typing into the console.
+R packages are a collection of functions, typically used for a specific purpose, such as phylogenetic analysis, advanced modelling, etc. In this tutorial we're going to mostly use functions from _base R_ (i.e. R without any additional packages), but sometimes we will use coding syntax from a package called _tidyverse_ and will use the graphics package _ggplot2_ to create our plots (which is conveniently included in the _tidyverse_ package). We'll also use some other packages that contain useful functions for making great plots.
 
+
+To install a R package, you can either use the menu bar or code the functions directly into the console.
 
 To **install** a package using the RStudio menu bar:
 
@@ -84,6 +93,15 @@ Directly into the console pane, type:
 ```{r}
 library(tidyverse)
 ```
+
+The other packages you'll need to install before the live tutorial are:
+
+* `RColorBrewer`
+* `viridis`
+* `cowplot`
+* `ggsci`
+
+
 
 
 *** 

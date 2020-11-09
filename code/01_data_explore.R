@@ -1,12 +1,12 @@
 # ******************************************************
 #
-#   Plotting with ggplot
+#   R Basics: Getting started in R
 #
-#   E. Dunne - 29th May 2020
+#   - E. Dunne 2020
 #
 # ______________________________________________________
 #
-#   Exploring and organising the data
+#   1. Exploring and organising the data
 #
 # ******************************************************
 
@@ -16,13 +16,14 @@ library(tidyverse)  # for manipulating and organising data - ggplot lies within 
 
 
 ## This line will clear your environment i.e. deletes ALL the objects you've created
-## Its also an excellent way to start over if shit hits the fan and nothing is running correctly :)
+## Its also an excellent way to start over if things go really wrong and nothing is running correctly :)
 rm(list = ls())
 
 
 ## Import the dataset (Source: https://gist.github.com/armgilles/194bcff35001e7eb53a2a8b441e8b2c6)
 pokemon <- as_tibble(read.csv("./datasets/pokemon.csv", header = TRUE, stringsAsFactors = FALSE))
 pokemon
+
 
 
 
