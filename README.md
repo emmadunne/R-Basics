@@ -19,7 +19,7 @@ The instructions and code are set up so that you can work through this in your o
 
 ## Part 1: Installation and setup
 
-$~$
+
 
 #### 1.1 Installation
 
@@ -42,7 +42,6 @@ You can change the arrangement of these panes as well as choose a colourful them
 **TIP:** Choose a theme where you can see commented lines of code clearly i.e. those that begin with a hash symbol (e.g. Cobalt, Merbivore)
 
 
-$~$
 
 #### 1.2. Set up a new RStudio project
 
@@ -59,10 +58,9 @@ To set up a new RStudio project (.Rproj):
 
 To keep everything organised, we'll set up some sub-folders within the project directory (folder) you've just created above. Leave RStudio and navigate to where you have just saved your project file to. Open the folder - you'll see a _.Rproj_ file - and within this folder, create 3 new sub-folders as shown below: datasets, scripts, and plots.
 
-![](./images/subfolders.png){width=20%}
+![](./images/subfolders.png)
 
 
-$~$
 
 #### 1.3. Installing and loading packages
 
@@ -87,7 +85,6 @@ Directly into the console pane, type:
 library(tidyverse)
 ```
 
-$~$
 
 *** 
 
