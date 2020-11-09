@@ -24,27 +24,31 @@ $~$
 #### 1.1 Installation
 
 
-To get started you will need the following software installed on your computer: [R](https://www.r-project.org) and [RStudio](https://www.rstudio.com):
+To get started you will need the following software installed on your computer: [R](https://www.r-project.org) and [RStudio](https://www.rstudio.com), a helpful editor and tool that keeps everything neat:
 
 * [Download and install R](https://cloud.r-project.org)
 
 * [Download and install RStudio Desktop](https://www.rstudio.com/products/RStudio/#Desktop)
 
-Once installed and opened, you can choose a theme for RStudio:
+Once you have RStudio installed and opened, take a look around! At first you'll see three panes: the console on the right and two panes on the left with various tabs you can click on to move across the different features. Don't worry too much about what each of them does for now - we'll find out in due course! 
+
+You can change the arrangement of these panes as well as choose a colourful theme for RStudio:
 
 1. Select _Tools > Global Options.._
 2. Navigate to the _Appearance_ tab
 3. Choose an editor theme from the dropdown menu
 4. Click _Apply_ then _OK_
 
+**TIP:** Choose a theme where you can see commented lines of code clearly i.e. those that begin with a hash symbol (e.g. Cobalt, Merbivore)
+
 
 $~$
 
 #### 1.2. Set up a new RStudio project
 
-In RStudio, you can [create 'projects'](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects) to help keep everything neat and tidy. This is especially useful if you are working on more than one research project at a time (and want to use version control), but is still generally good practice for keeping your files, codes, etc. organised.
+In RStudio, you can [create 'projects'](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects) to help keep everything neat and tidy. This is especially useful if you are working on more than one research project at a time (and perhaps want to use version control), but is still generally good practice for keeping your files, code, etc. organised.
 
-To set up a new RStudio project:
+To set up a new RStudio project (.Rproj):
 
 1. Select _File > New Project..._
 2. Create a project from a _New Directory_ (following this, select _New Project_ if promopted)
@@ -53,25 +57,34 @@ To set up a new RStudio project:
 5. This creates a new project file (.Rproj) within a project directory (i.e. a folder)
 
 
-To keep everything organised, we'll set up some sub-folders within the folder you created when you set up a new Rproj. above. Leave RStudio and navigate to where you have just saved your project file. Open the folder - you'll see a _.Rproj_ file. Within this folder, create 3 new sub-folders: (i) datasets, (ii) scripts, and (iii) plots.
+To keep everything organised, we'll set up some sub-folders within the project directory (folder) you've just created above. Leave RStudio and navigate to where you have just saved your project file to. Open the folder - you'll see a _.Rproj_ file - and within this folder, create 3 new sub-folders as shown below: datasets, scripts, and plots.
+
+![](./images/subfolders.png){width=20%}
 
 
 $~$
 
 #### 1.3. Installing and loading packages
 
-Packages contain additional functions that are useful for specific purposes, for example creating graphs in the package ggplot2. There are two steps we need to take before using a package: installing it and loading it.
-
-To **install** a package using the RStudio menu options:
-<br />a) Select _Tools > Install packages.._
-<br />b) Search for the package by name and select it from the drop-down menu that appears
-<br />c) Click _Install_
-<br />d) In the Console window you might see some text scrolling up as the package installs
+R packages are a collection of functions, typically used for a specific purpose, such as phylogenetic analysis, advanced modelling, etc. In this tutorial we're going to use functions from _base R_ (i.e. R without any additional packages), but sometimes we will use coding syntax from a package called _tidyverse_ and will use the graphics package _ggplot2_ to create our plots. Conveniently, _ggplot2_ is included in the _tidyverse_ package, so we just need to install and load a single package. You can does this either by using the menu bar or by typing into the console.
 
 
-To **load** a package, you will need to use the following code in the Console window:
+To **install** a package using the RStudio menu bar:
+
+1. Select _Tools > Install packages.._
+2. Search for the package by name (e.g. _tidyverse_) and select it from the drop-down menu that appears
+3. Click _Install_ (at which point some text might scroll through in the console pane)
+
+To **install** a package using the R console, type the following directly at the *>* :
 ```{r}
-library(packagename)
+install.packages("tidyverse")
+```
+
+Installing a package is like buying a book to place on your shelf. In order to read the book, we need to take it from the shelf, so in terms of a R package, we need to `load()` it.
+
+Directly into the console pane, type:
+```{r}
+library(tidyverse)
 ```
 
 $~$
