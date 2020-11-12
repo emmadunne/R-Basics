@@ -72,15 +72,6 @@ n_types # calls up the object content
 ## so it can be useful to pear it down a little...
 
 
-## Filter the dataset to only water, fire, and grass Pokemon (from all generations):
-pokemon_WFG <- filter(pokemon, str_detect("( Water | Fire | Grass )", Type_1))
-
-## For the stats tests and the plotting, we're going to focus on a Pokemon's primary type,
-## so let's rename the column " Type_1" to make it less confusing
-pokemon_WFG <- rename(pokemon_WFG, "Type" = "Type_1")
-head(pokemon_WFG) # check
-
-
 ## Filter the dataset to only Generation 1 Pokemon:
 pokemon_gen1 <- filter(pokemon, Generation == "1") 
 
@@ -95,4 +86,15 @@ t_avg_gen2 <- summarise(pokemon_gen2, avg = mean(Speed))
 t_avg_gen1 - t_avg_gen2
 
 
+## Filter the dataset to only water, fire, and grass Pokemon (from all generations):
+pokemon_WFG <- filter(pokemon, str_detect("( Water | Fire | Grass )", Type_1))
+
+## For the stats tests and the plotting, we're going to focus on a Pokemon's primary type,
+## so let's rename the column " Type_1" to make it less confusing
+pokemon_WFG <- rename(pokemon_WFG, "Type" = "Type_1")
+head(pokemon_WFG) # check
+
+
+## You might want to save a copy of this new, truncated dataset for later use:
+write_csv(pokemon_WFG, "./datasets/pokemon_WFG.csv")
 

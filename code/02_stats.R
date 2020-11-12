@@ -53,3 +53,4 @@ summary(poke_anova)
 ## for performing multiple pairwise-comparison between the means of groups:
 TukeyHSD(poke_anova)
 # in the output, look for the "p adj" value...
+

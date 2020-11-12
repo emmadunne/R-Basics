@@ -173,6 +173,3 @@ ggsave("./plots/Figure_combo.pdf", plot = poke_plots, width = 45, height = 20, u
 
 
 
-
-
-
