@@ -128,13 +128,22 @@ head(pokemon)
 
 #### 2.2 Explore the data
 
-Using the same script from above, we'll use various base-R and `tidyverse` functions to take a look at the structure and content of our dataset
+Using the same script from above, we'll use various base-R and `tidyverse` functions to take a look at the structure and content of our dataset, as well as organise it in a way that best suits what we want to test and plot.
 
 **TIP:** A handy place to find lots of useful data manipulation functions is in the cheatsheet: In the menu bar, select _Help > Cheatsheets > Data Transformation with dplyr_
 
 
 #### 2.3 Stats!
 
-Next, we'll check out how to do some simple stats. For this, you'll need the script file _02_stats.R_.
+Next, we'll check out how to do some simple stats tests: t-test and ANOVA. For this, you'll need the script file _02_stats.R_.
 
+
+#### 2.4 Plotting
+
+Finally, we'll use the _03_plotting.R_ script to create two different kinds of plots for continuous data, a scatterplot and boxplots.
+
+
+#### 2.5 Further example to explore
+
+Now it's over to you! Using functions from previous scripts, check out the dataset in _04_example.R_ and have a go at exploring these data, doing some simple stats tests and creating plots!
 
