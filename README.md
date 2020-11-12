@@ -20,7 +20,7 @@ The possibilities with R are endless, as is the time we could spend exploring th
 
 
 
-#### 1.1 Install programmes
+#### 1.1 Install R and RStudio
 
 
 To get started you will need the following software installed on your computer: [R](https://www.r-project.org) and [RStudio](https://www.rstudio.com), a helpful editor and tool that keeps everything neat:
@@ -29,27 +29,24 @@ To get started you will need the following software installed on your computer: 
 
 * [Download and install RStudio Desktop](https://www.rstudio.com/products/RStudio/#Desktop)
 
-There so much info, tips and help out there for using R, but to get started I would recommend these simple guides:
+There is so much info out there online and in books for using R, but if you're just getting started, I would recommend these simple guides:
 
 * [YaRrr! The Pirates's Guide to R](https://bookdown.org/ndphillips/YaRrr/where-did-this-book-come-from.html)
 * [An Introduction to R and RStudio cheatsheet - Miles Benton](http://sirselim.github.io/Introduction-to-R-and-RStudio/cheatsheet/index.html)
 * [R for cats](https://rforcats.net/)
 
 
-Once you have RStudio installed and opened, take a look around! At first you'll see three panes: the console on the right and two panes on the left with various tabs you can click on to move across the different features. Don't worry too much about what each of them does for now - we'll find out in due course! 
+Once you have RStudio installed and opened, take a look around! 
 
 ![](./images/RStudio.png)
 
 
-You can change the arrangement of these panes as well as choose a colourful theme for RStudio:
+You can change the arrangement of these panes as well as pick a colourful theme for RStudio:
 
 1. Select _Tools > Global Options.._
 2. Navigate to the _Appearance_ tab
 3. Choose an editor theme from the dropdown menu
 4. Click _Apply_ then _OK_
-
-**TIP:** Choose a theme where you can see commented lines of code clearly i.e. those that begin with a hash symbol (e.g. Cobalt, Merbivore)
-
 
 
 #### 1.2. Set up a new R Project
@@ -100,36 +97,44 @@ install.packages("tidyverse")
 
 The other packages you'll need to install before the live tutorial are:
 
+* `colourpicker`
 * `RColorBrewer`
 * `viridis`
 * `cowplot`
-* `ggsci`
 
 
 
 
 *** 
 
-## Part 2: Import data files
+## Part 2: Import data files, some stats, and plotting
 
-#### 2.1 Open R script
+#### 2.1 Open R script & import data
 
 For this next part, you'll need to open the script file _01_data_explore.R_ in RStudio. There, we'll follow the steps to import our data file, explore the data and organise the file how we want it for analyses.
 
 
-*TIP*
-* Lines that begin with # are comments. If you run any code that starts with #, R will just ignore that line. Comment on your code script LIBERALLY - I promise you will forget what you were trying to do if you don't take note of it!
+**TIP:** Lines that begin with # are comments. If you run any code that starts with #, R will just ignore that line. Comment on your code script LIBERALLY - I promise you will forget what you were trying to do if you don't take note of it!
 
 
+Example code (and comments) for importing data:
+```{r}
 # Import the pokemon dataset
-pokemon <- as_tibble(read.csv("./datasets/pokemon.csv", header = TRUE, stringsAsFactors = FALSE))
+pokemon <- read.csv("./datasets/pokemon.csv", header = TRUE, stringsAsFactors = FALSE)
 
 # Take a peak at the dataset
 head(pokemon)
+```
+
+#### 2.2 Explore the data
+
+Using the same script from above, we'll use various base-R and `tidyverse` functions to take a look at the structure and content of our dataset
+
+**TIP:** A handy place to find lots of useful data manipulation functions is in the cheatsheet: In the menu bar, select _Help > Cheatsheets > Data Transformation with dplyr_
 
 
+#### 2.3 Stats!
 
-
-
+Next, we'll check out how to do some simple stats. For this, you'll need the script file _02_stats.R_.
 
 

@@ -13,16 +13,16 @@
 
 ## Let's explore a new dataset!
 ## The comments below provide some prompts for you to try out the code we've already used for yourself,
-## or you can use this opportunity to search for new ways of doing things using the Google machine
+## or you can use this opportunity to search for new ways of doing things using good ol' Google
 
-## The dataset we'll use is a simple one that comes built-in to tidyverse, check it out:
-starwars
+## The dataset we'll use is a simple one that comes built into tidyverse, check it out:
+View(starwars)
 
 
 
 # 1. Explore the data --------------------------------------------------------
 
-## First let's explore the dataset and get comfortable with the what's inside it
+## First explore the dataset and get comfortable with the what's inside it
 
 # What does the dataset look like? 
 View(starwars)
@@ -45,11 +45,14 @@ View(starwars)
 
 
 ## Using pieces of code from the previous scripts, 
-## and/or code you pull from the Google machine yourself,
+## and/or code you pull from Google searches yourself,
 ## create a plot that best represents an interesting story from the data
 
 
 ## Before you start plotting, might it be useful to filter or subset the main dataset to make things easier?
+
+
+
 
 
 

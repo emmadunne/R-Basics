@@ -12,21 +12,23 @@
 
 
 ## Load additional packages:
+library(colourpicker)   # for custom palettes
+library(RColorBrewer)   # preset colour palettes
+library(viridis)        # continuous colour palettes
 library(cowplot)        # for arranging plot grids
-library(viridis)        # colour palette
-library(RColorBrewer)   # another colour palette
-library(ggsci)          # and another colour palette
 
 
 
-## Plotting in base R is really simple:
+## Plotting in base R is really simple
+## Here's a simple regression plot showing Pokemon attack vs. speed
 plot(pokemon$Attack ~ pokemon$Speed)
 
-## But many people prefer using ggplot, as it has greater customisation 
+## But its not very fancy or nice to look at...
+## Many people prefer using the package ggplot2 (part of the tidyverse), as it has greater customisation 
 ## Even the BBC use it: https://bbc.github.io/rcookbook/
 
 
-## The essential elements of a ggplot2 graphic are:
+## The essential elements of a ggplot graphic are:
 #   1. Data element
 #   2. Aesthetics element (mapping = aes)
 #   3. Geometries element (geom_)
@@ -38,57 +40,42 @@ plot(pokemon$Attack ~ pokemon$Speed)
 
 
 ## Let's start with something simple, a scatterplot
-## We'll work with a suubset of the dataset to make things easier
+## We'll work with a filtered dataset to make things simlper - the same one we created in the first script
 
-## First, let's set up the base of the plot - note the data, aesthetics, and geom_:
-ggplot(data = pokemon_WNG, mapping = aes(x = Attack, y = Defense)) +
+## First, let's set up the base of the plot - note the data, aesthetics, and geom_ elements:
+ggplot(data = pokemon_WFG, mapping = aes(x = Attack, y = Defense)) +
   geom_point()
 
 
 ## Cool, now let's add a bit of colour:
-ggplot(data = pokemon_WNG, mapping = aes(x = Attack, y = Defense, colour = Type_1)) +
+ggplot(data = pokemon_WFG, mapping = aes(x = Attack, y = Defense, colour = Type)) +
   geom_point()
 
 
-## Cool colours, but they're not very useful - let's try a few different palettes
-## There are SO many colour options in ggplot, some of them can be found in this PDF: https://www.nceas.ucsb.edu/sites/default/files/2020-04/colorPaletteCheatsheet.pdf
+## There are lot's of packages that contain preset colour palettes, such as R Color Brewer:
+## See more here: https://www.nceas.ucsb.edu/sites/default/files/2020-04/colorPaletteCheatsheet.pdf
 
-# R Color Brewer:
-ggplot(data = pokemon_WNG, mapping = aes(x = Attack, y = Defense, colour = Type_1)) +
+ggplot(data = pokemon_WFG, mapping = aes(x = Attack, y = Defense, colour = Type)) +
   geom_point() +
   scale_color_brewer(palette = "Dark2")
 
-# Viridis
-ggplot(data = pokemon_WNG, mapping = aes(x = Attack, y = Defense, colour = Type_1)) +
+
+## While this is convenient, its much more fun to pick our own colours using the package colour picker
+## Names of colours can be found here: https://www.nceas.ucsb.edu/sites/default/files/2020-04/colorPaletteCheatsheet.pdf
+ggplot(data = pokemon_WFG, mapping = aes(x = Attack, y = Defense, colour = Type)) +
   geom_point() +
-  scale_color_viridis(discrete = TRUE, option = "D")
+  scale_color_manual(values = c("firebrick2", "chartreuse3", "dodgerblue1"), guide = guide_legend(title = "Type"))
 
-# Scienitfic colour palette
-ggplot(data = pokemon_WNG, mapping = aes(x = Attack, y = Defense, colour = Type_1)) +
+
+## Now let's tinker with the theme to make it look all professional
+## ggplot has plenty of built-in themes:
+ggplot(data = pokemon_WFG, mapping = aes(x = Attack, y = Defense, colour = Type)) +
   geom_point() +
-  scale_color_npg() # scale_color_tron()
-
-
-## But none of them really suit our dataset, so let's select our own colours...
-## Another really helpful tool is R Colour Picker:
-install.packages("colourpicker")
-library(colourpicker)
-
-ggplot(data = pokemon_WNG, mapping = aes(x = Attack, y = Defense, colour = Type_1)) +
-  geom_point() +
-  scale_color_manual(values = c("chartreuse3", "darkorchid2", "dodgerblue2"), guide = guide_legend(title = "Type"))
-
-
-## Now let's tinker with the theme
-## ggplot has plenty of bult-in themes:
-ggplot(data = pokemon_WNG, mapping = aes(x = Attack, y = Defense, colour = Type_1)) +
-  geom_point() +
-  scale_color_manual(values = c("chartreuse3", "darkorchid2", "dodgerblue2"), guide = guide_legend(title = "Type")) +
+  scale_color_manual(values = c("firebrick2", "chartreuse3", "dodgerblue1"), guide = guide_legend(title = "Type")) +
   theme_minimal()
 
 
 ## But you can also create your own custom themes - ideal for keeping all your plots looking similar:
-
 mytheme <- theme_minimal() + theme(panel.background = element_blank(),
                  #panel.grid.minor.y = element_blank(),
                  #panel.grid.minor.x = element_blank(),
@@ -98,45 +85,29 @@ mytheme <- theme_minimal() + theme(panel.background = element_blank(),
                  axis.title = element_text(size=12),
                  legend.position = "top")
 
-ggplot(data = pokemon_WNG, mapping = aes(x = Attack, y = Defense, colour = Type_1)) +
+ggplot(data = pokemon_WFG, mapping = aes(x = Attack, y = Defense, colour = Type)) +
   geom_point() +
-  scale_color_manual(values = c("chartreuse3", "darkorchid2", "dodgerblue2"), guide = guide_legend(title = "Type")) +
+  scale_color_manual(values = c("firebrick2", "chartreuse3", "dodgerblue1"), guide = guide_legend(title = "Type")) +
   mytheme
 
 
-## ggplot is pretty clever at knowing how to plot the important information,
-## but everything can be over written is you need it to be:
-ggplot(data = pokemon_WNG, mapping = aes(x = Attack, y = Defense, colour = Type_1)) +
+## We can even layer some stats over plots, such as a regression line:
+ggplot(data = pokemon_WFG, mapping = aes(x = Attack, y = Defense, colour = Type)) +
   geom_point() +
-  scale_color_manual(values = c("chartreuse3", "darkorchid2", "dodgerblue2"), guide = guide_legend(title = "Type")) +
-  mytheme +
-  labs(x = "Attack!", y = "Defense") + ggtitle("Pokemon stats") +
-  scale_x_continuous(expand = c(0, 0), limits = c(0, 200), breaks = seq(0, 200, 25)) +
-  scale_y_continuous(expand = c(0, 0), limits = c(0, 200), breaks = c(0, 40, 70, 105, 139, 180))
-
-
-
-## Let's level up and add a second geom, with a statistical twist
-ggplot(data = pokemon_WNG, mapping = aes(x = Attack, y = Defense, colour = Type_1)) +
-  geom_point() +
-  geom_smooth(aes(colour = Type_1, fill = Type_1), method = "lm") + 
-  scale_color_manual(values = c("chartreuse3", "darkorchid2", "dodgerblue2"), guide = guide_legend(title = "Type")) +
-  scale_fill_manual(values = c("chartreuse3", "darkorchid2", "dodgerblue2"), guide = guide_legend(title = "Type")) +
-  mytheme +
-  scale_x_continuous(expand = c(0, 0), limits = c(0, 165), breaks = seq(0, 165, 30)) +
-  scale_y_continuous(expand = c(0, 0), limits = c(0, 190), breaks = seq(0, 190, 20))
+  geom_smooth(aes(colour = Type, fill = Type), method = "lm") + 
+  scale_color_manual(values = c("firebrick2", "chartreuse3", "dodgerblue1"), guide = guide_legend(title = "Type")) +
+  scale_fill_manual(values = c("firebrick2", "chartreuse3", "dodgerblue1"), guide = guide_legend(title = "Type")) +
+  mytheme
 
 
 ## And now the important bit - saving your plots!
 ## First, we'll need to name our plot:
-poke_plot_scatter <- ggplot(data = pokemon_WNG, mapping = aes(x = Attack, y = Defense, colour = Type_1)) +
+poke_plot_scatter <- ggplot(data = pokemon_WFG, mapping = aes(x = Attack, y = Defense, colour = Type)) +
   geom_point() +
-  geom_smooth(aes(colour = Type_1, fill = Type_1), method = "lm") + 
-  scale_color_manual(values = c("chartreuse3", "darkorchid2", "dodgerblue2"), guide = guide_legend(title = "Type")) +
-  scale_fill_manual(values = c("chartreuse3", "darkorchid2", "dodgerblue2"), guide = guide_legend(title = "Type")) +
-  mytheme +
-  scale_x_continuous(expand = c(0, 0), limits = c(0, 165), breaks = seq(0, 165, 30)) +
-  scale_y_continuous(expand = c(0, 0), limits = c(0, 190), breaks = seq(0, 190, 20))
+  geom_smooth(aes(colour = Type, fill = Type), method = "lm") + 
+  scale_color_manual(values = c("firebrick2", "chartreuse3", "dodgerblue1"), guide = guide_legend(title = "Type")) +
+  scale_fill_manual(values = c("firebrick2", "chartreuse3", "dodgerblue1"), guide = guide_legend(title = "Type")) +
+  mytheme
 poke_plot_scatter
 
 ## Save the plot to your plots folder:
@@ -152,14 +123,16 @@ ggsave("./plots/Figure_1.pdf", plot = poke_plot_scatter, width = 25, height = 20
 
 ## Another kind of plot that is useful for displaying continuous data is a boxplot
 
-## To begin, we need to make sure that the variable we're interested in plotting is being read by R as a categorical or factoral variable:
-pokemon_WNG$Type_1 <-  as.factor(pokemon_WNG$Type_1)
-head(pokemon_WNG) # check
+## To begin, we need to make sure that the variable we're interested in (i.e. Type)
+## is being read by R as a categorical (factoral) variable, and not a continuous variable:
+class(pokemon_WFG$Type) # currently being read as nothing in particular ("NULL")
+pokemon_WFG$Type <- as.factor(pokemon_WFG$Type) 
+class(pokemon_WFG$Type) # check that its a "factor"
 
 
 ## A basic boxplot can be constructed like this:
-ggplot(pokemon_WNG, aes(x=Type_1, y=Speed)) + 
-  geom_boxplot() + coord_flip()
+ggplot(pokemon_WFG, aes(x=Type, y=Speed)) + 
+  geom_boxplot() # adds a boxplot element
 
 ## Now let's get fancy!
 
@@ -167,17 +140,17 @@ ggplot(pokemon_WNG, aes(x=Type_1, y=Speed)) +
 theme_set(theme_light(base_size = 12))
 
 # Now, let's construct our plot, layer by layer:
-poke_plot_box <- ggplot(pokemon_WNG, aes(x = Type_1, y = Speed, color = Type_1)) +
+poke_plot_box <- ggplot(pokemon_WFG, aes(x = Type, y = Speed, color = Type)) +
   #coord_flip() +
-  scale_color_manual(values = c("chartreuse3", "darkorchid2", "dodgerblue2")) +
-  scale_x_discrete(labels = c("Grass", "Normal", "Water")) +
+  scale_color_manual(values = c("firebrick2", "chartreuse3", "dodgerblue1")) +
+  scale_x_discrete(labels = c("Fire", "Grass", "Water")) +
   scale_y_continuous(expand = c(0, 0), limits = c(0, 130), breaks = seq(0, 130, 20)) +
   labs(x = NULL, y = "Speed") + ggtitle("Poke Speeds") +
   theme(legend.position = "none",
         axis.title = element_text(size = 12),
         axis.text.x = element_text(size = 10),
         panel.grid = element_blank()) + 
-  geom_boxplot(color = "gray40", fill = c("chartreuse3", "darkorchid2", "dodgerblue2"), 
+  geom_boxplot(color = "gray40", fill = c("firebrick2", "chartreuse3", "dodgerblue1"), 
                alpha = 0.5, lwd = 0.5) +
   geom_jitter(size = 2, alpha = 0.5, width = 0.2) +
   stat_summary(fun = mean, geom = "point", size = 5)
