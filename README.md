@@ -1,15 +1,15 @@
 # R Basics
 
 
-This tutorial will provide a step-by-step guide to get you familiar with using R and RStudio for running analyses and creating plots. The possibilities with R are endless, so hopefully this will 
+This tutorial will provide a step-by-step guide to get you familiar with using R and RStudio for running analyses and creating plots. The instructions and code are set up so that you can work through this in your own time, but if you are tuning in to the live session, make sure you have completed **Part 1** below before we begin.
 
-The instructions and code are set up so that you can work through this in your own time, but if you are tuning in to the live session, make sure you have completed **Part 1** below before we begin.
+The possibilities with R are endless, as is the time we could spend exploring the programme. But here, we're going to work through an example that will hopefully help you hit the ground running, and everything else will start making sense as you go along.
 
 
 **Objectives of this tutorial:**
 
 * Install and set up R and RStudio
-* Import and explore a data file
+* Import and explore some data
 * Perform some simple statistical analyses
 * Create some cool plots
 
@@ -29,7 +29,17 @@ To get started you will need the following software installed on your computer: 
 
 * [Download and install RStudio Desktop](https://www.rstudio.com/products/RStudio/#Desktop)
 
+There so much info, tips and help out there for using R, but to get started I would recommend these simple guides:
+
+* [YaRrr! The Pirates's Guide to R](https://bookdown.org/ndphillips/YaRrr/where-did-this-book-come-from.html)
+* [An Introduction to R and RStudio cheatsheet - Miles Benton](http://sirselim.github.io/Introduction-to-R-and-RStudio/cheatsheet/index.html)
+* [R for cats](https://rforcats.net/)
+
+
 Once you have RStudio installed and opened, take a look around! At first you'll see three panes: the console on the right and two panes on the left with various tabs you can click on to move across the different features. Don't worry too much about what each of them does for now - we'll find out in due course! 
+
+![](./images/RStudio.png)
+
 
 You can change the arrangement of these panes as well as choose a colourful theme for RStudio:
 
@@ -69,7 +79,7 @@ Finally, you'll need to create a empty _plots_ folder. Your project directly sho
 
 
 
-#### 1.3. Installing and loading packages
+#### 1.3. Installing packages
 
 R packages are a collection of functions, typically used for a specific purpose, such as phylogenetic analysis, advanced modelling, etc. In this tutorial we're going to mostly use functions from _base R_ (i.e. R without any additional packages), but sometimes we will use coding syntax from a package called _tidyverse_ and will use the graphics package _ggplot2_ to create our plots (which is conveniently included in the _tidyverse_ package). We'll also use some other packages that contain useful functions for making great plots.
 
@@ -87,12 +97,6 @@ To **install** a package using the R console, type the following directly at the
 install.packages("tidyverse")
 ```
 
-Installing a package is like buying a book to place on your shelf. In order to read the book, we need to take it from the shelf, so in terms of a R package, we need to `load()` it.
-
-Directly into the console pane, type:
-```{r}
-library(tidyverse)
-```
 
 The other packages you'll need to install before the live tutorial are:
 
@@ -107,6 +111,24 @@ The other packages you'll need to install before the live tutorial are:
 *** 
 
 ## Part 2: Import data files
+
+#### 2.1 Open R script
+
+For this next part, you'll need to open the script file _01_data_explore.R_ in RStudio. There, we'll follow the steps to import our data file, explore the data and organise the file how we want it for analyses.
+
+
+*TIP*
+* Lines that begin with # are comments. If you run any code that starts with #, R will just ignore that line. Comment on your code script LIBERALLY - I promise you will forget what you were trying to do if you don't take note of it!
+
+
+# Import the pokemon dataset
+pokemon <- as_tibble(read.csv("./datasets/pokemon.csv", header = TRUE, stringsAsFactors = FALSE))
+
+# Take a peak at the dataset
+head(pokemon)
+
+
+
 
 
 

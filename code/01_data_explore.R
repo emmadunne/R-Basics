@@ -11,18 +11,27 @@
 # ******************************************************
 
 
-## Load package(s):
+## Hopefully, you'll already have installed the required packages (see Part 1.3 here: https://github.com/emmadunne/R-Basics)
+## Installing a package is like buying a book to place on your shelf. In order to read the book, we need to take it from the shelf, so in terms of a R package, we need to `load` it:
 library(tidyverse)  # for manipulating and organising data - ggplot lies within this collection
 
 
-## This line will clear your environment i.e. deletes ALL the objects you've created
+## Before we begin anything new, it can be useful to clear your environment i.e. delete all of the things that R 'knows'
 ## Its also an excellent way to start over if things go really wrong and nothing is running correctly :)
 rm(list = ls())
 
 
-## Import the dataset (Source: https://gist.github.com/armgilles/194bcff35001e7eb53a2a8b441e8b2c6)
+
+
+
+# Importing the data file -------------------------------------------------
+
+
+## Import the Pokemon dataset (Source: https://gist.github.com/armgilles/194bcff35001e7eb53a2a8b441e8b2c6)
 pokemon <- as_tibble(read.csv("./datasets/pokemon.csv", header = TRUE, stringsAsFactors = FALSE))
-pokemon
+
+## Take a peak at the dataset:
+head(pokemon)
 
 
 
