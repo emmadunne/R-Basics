@@ -32,7 +32,7 @@ To get started you will need the following software installed on your computer: 
 There is so much info out there online and in books for using R, but if you're just getting started, I would recommend these simple guides:
 
 * [YaRrr! The Pirates's Guide to R](https://bookdown.org/ndphillips/YaRrr/where-did-this-book-come-from.html)
-* [An Introduction to R and RStudio cheatsheet - Miles Benton](http://sirselim.github.io/Introduction-to-R-and-RStudio/cheatsheet/index.html)
+* [An Introduction to R and RStudio cheatsheet](http://sirselim.github.io/Introduction-to-R-and-RStudio/cheatsheet/index.html)
 * [R for cats](https://rforcats.net/)
 
 
