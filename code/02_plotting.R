@@ -6,16 +6,14 @@
 #
 # ______________________________________________________
 #
-#   3. Plotting the Pokemon data
+#   2. Plotting the Pokemon data
 #
 # ******************************************************
 
 
 ## Load additional packages:
-library(colourpicker)   # for custom palettes
 library(RColorBrewer)   # preset colour palettes
-library(viridis)        # continuous colour palettes
-library(cowplot)        # for arranging plot grids
+library(ggpubr)         # for arranging plot grids
 
 
 
@@ -144,7 +142,7 @@ poke_boxplot <- ggplot(pokemon_WFG, aes(x = Type, y = Speed, color = Type)) +
   scale_color_manual(values = c("#DC267F", "#FFB000", "#648FFF")) +
   scale_x_discrete(labels = c("Fire", "Grass", "Water")) +
   scale_y_continuous(expand = c(0, 0), limits = c(0, 130), breaks = seq(0, 130, 20)) +
-  labs(x = NULL, y = "Speed") + ggtitle("Poke Speeds") +
+  labs(x = NULL, y = "Speed") + 
   theme(legend.position = "none",
         axis.title = element_text(size = 12),
         axis.text.x = element_text(size = 10),
@@ -169,5 +167,19 @@ poke_plots
 ## And save:
 ggsave("./plots/Figure_combo.pdf", plot = poke_plots, width = 45, height = 20, units = "cm")
 
+
+## Combine both plots using the gpubr package
+poke_plots <- ggarrange(poke_scatter, poke_boxplot, 
+                        common.legend = TRUE, legend = "bottom",
+                        labels = c("(a)", "(b)"),
+                        ncol = 2, nrow = 1)
+poke_plots <- annotate_figure(poke_plots, top = text_grob("Fire, Grass, and Water Pokemon", 
+                                                          face = "bold", size = 14))
+poke_plots # take a look
+
+ggsave(plot = poke_plots,
+       width = 21, height = 29, dpi = 500, units = "cm", 
+       filename = "./plots/poke_plots.pdf", 
+       useDingbats=FALSE)
 
 
