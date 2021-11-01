@@ -1,14 +1,14 @@
 # R Basics
 
 
-This tutorial will provide a step-by-step guide to get you familiar with using R and RStudio for running analyses and creating plots. The instructions and code are set up so that you can work through this in your own time, but if you are tuning in to the live session, make sure you have completed **Part 1** below before we begin.
+This tutorial will provide a step-by-step guide to get you familiar with using R and RStudio. The instructions and code are set up so that you can work through this in your own time, but if you are tuning in to a live session of this tutorial, make sure you have completed **Part 1** below before we begin.
 
 The possibilities with R are endless, as is the time we could spend exploring the programme. But here, we're going to work through an example that will hopefully help you hit the ground running, and everything else will start making sense as you go along.
 
 
 **Objectives of this tutorial:**
 
-* Install and set up R and RStudio
+* Install and set up R and RStudio (Part 1)
 * Import and explore some data
 * Perform some simple statistical analyses
 * Create some cool plots
@@ -107,7 +107,7 @@ The other packages you'll need to install before the live tutorial are:
 
 *** 
 
-## Part 2: Import data files, some stats, and plotting
+## Part 2: Let's get coding!
 
 #### 2.1 Open R script & import data
 
