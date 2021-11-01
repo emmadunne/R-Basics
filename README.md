@@ -95,12 +95,11 @@ install.packages("tidyverse")
 ```
 
 
-The other packages you'll need to install before the live tutorial are:
+The other packages you'll need to install to run the code in these scripts are:
 
-* `colourpicker`
 * `RColorBrewer`
-* `viridis`
-* `cowplot`
+* `gpubr`
+* `palmerpenguins`
 
 
 
@@ -109,9 +108,10 @@ The other packages you'll need to install before the live tutorial are:
 
 ## Part 2: Let's get coding!
 
-#### 2.1 Open R script & import data
 
-For this next part, you'll need to open the script file _01_data_explore.R_ in RStudio. There, we'll follow the steps to import our data file, explore the data and organise the file how we want it for analyses.
+#### 2.1 Importing data
+
+For this part, you'll need to open the script file _01_pokemon.R_ in RStudio. There, we'll follow the super simple steps to import our data file.
 
 
 **TIP:** Lines that begin with # are comments. If you run any code that starts with #, R will just ignore that line. Comment on your code script LIBERALLY - I promise you will forget what you were trying to do if you don't take note of it!
@@ -120,13 +120,13 @@ For this next part, you'll need to open the script file _01_data_explore.R_ in R
 Example code (and comments) for importing data:
 ```{r}
 # Import the pokemon dataset
-pokemon <- read.csv("./datasets/pokemon.csv", header = TRUE, stringsAsFactors = FALSE)
+pokemon <- read_csv("./datasets/pokemon.csv")
 
-# Take a peak at the dataset
+# Take a peak at the top few lines of the dataset
 head(pokemon)
 ```
 
-#### 2.2 Explore the data
+#### 2.2 Exploring and manipulating the data
 
 Using the same script from above, we'll use various base-R and `tidyverse` functions to take a look at the structure and content of our dataset, as well as organise it in a way that best suits what we want to test and plot.
 
@@ -135,15 +135,24 @@ Using the same script from above, we'll use various base-R and `tidyverse` funct
 
 #### 2.3 Stats!
 
-Next, we'll check out how to do some simple stats tests: t-test and ANOVA. For this, you'll need the script file _02_stats.R_.
+Next, we'll use the same script to check out how to do some simple stats tests: t-test and ANOVA.
 
 
 #### 2.4 Plotting
 
-Finally, we'll use the _03_plotting.R_ script to create two different kinds of plots for continuous data, a scatterplot and boxplots.
+Finally, we'll use the _02_plotting.R_ script to create two different kinds of plots for continuous data, a scatterplot and boxplots.
 
 
-#### 2.5 Further example to explore
+#### 2.5 Try it out for yourself
 
-Now it's over to you! Using functions from previous scripts, check out the dataset in _04_example.R_ and have a go at exploring these data, doing some simple stats tests and creating plots!
+Now it's over to you! Using functions from previous scripts, check out the dataset in _03_starwars.R_ and have a go at exploring these data, doing some simple stats tests and creating plots!
+
+
+## Part 3: Stepping things up a notch
+
+#### 3.1 Palmer penguins
+
+In the _04_penguins.R_ script, we'll explore the Palmer penguins dataset from the  [palmerpenguins](https://allisonhorst.github.io/palmerpenguins/) R package
+
+
 
