@@ -1,14 +1,14 @@
-# ******************************************************
+# *********************************************************
 #
-#   R Basics: Getting started in R
+#   R Basics: Getting started in R & RStudio
 #
 #   - E. Dunne 2021
 #
-# ______________________________________________________
+# _________________________________________________________
 #
-#   1. Importing and manipulating datasets with Pokemon!!
+#   1. Importing and manipulating datasets with Pokemon!
 #
-# ******************************************************
+# *********************************************************
 
 
 ## Hopefully, you'll already have installed the required packages (see Part 1.3 here: https://github.com/emmadunne/R-Basics)
@@ -25,36 +25,35 @@ rm(list = ls())
 # Importing the data file -------------------------------------------------
 
 ## Import the Pokemon dataset (Source: https://gist.github.com/armgilles/194bcff35001e7eb53a2a8b441e8b2c6)
-pokemon <- read.csv("./datasets/pokemon.csv", header = TRUE, stringsAsFactors = FALSE)
+pokemon <- read_csv("./datasets/pokemon.csv")
 
-## Take a peak at the dataset:
+## Take a peak at the top few lines of the dataset:
 head(pokemon)
+## Get a glimpse of your dataset, especially the column names:
+glimpse(pokemon)
+## Open the full dataset in a new tab in RStudio:
+View(pokemon)
 
 
 
 # Exploring the dataset ---------------------------------------------------
 
-
-## View the structure of the dataset in the console:
-str(pokemon)
-
-## Open the full dataset in a new tab in RStudio:
-View(pokemon)
-
-
-## How many pokemon are there?
-length(unique(pokemon$Name))
-
+## To explore the data, we'll use a combination of base-R and tidyverse syntax
+## Some people gravitate towards one or the other, but many use a combination depending on what they're doing
+## (I tend to favour tidyverse in this tutorial)
 
 ## How many different pokemon types are there?
-## can use either a base-R function or a tidyverse function:
 distinct(pokemon, Type_1) # tidyverse
 unique(pokemon$Type_1) # base-R
 
+## How many pokemon are there?
+length(unique(pokemon$Name)) # base-R
+
 
 ## What's the average...?
-summarise(pokemon, avg = mean(Total))
-summarise(pokemon, avg = mean(Speed)) # etc.
+summarise(pokemon, avg = mean(Total)) # tidyverse
+summarise(pokemon, avg = mean(Speed)) # tidyverse
+# etc.
 
 
 ## How many pokemon of each type are there?
@@ -64,6 +63,9 @@ n_types <- count(pokemon, Type_1, sort = TRUE)
 n_types # calls up the object content
 
 
+## For more data manipulation functions in dplyr (part of the tidyverse), check out the cheetsheet by following:
+## Help > Cheatsheets > Data transformation with dplyr
+
 
 
 # Filtering the dataset ---------------------------------------------------
@@ -72,7 +74,7 @@ n_types # calls up the object content
 ## so it can be useful to pear it down a little...
 
 
-## Filter the dataset to only Generation 1 Pokemon:
+## Filter the dataset to only Generation 1 Pokemon, by creating a new object
 pokemon_gen1 <- filter(pokemon, Generation == "1") 
 
 ### Let's take a look at how Generation 1 and Generation 2 differ in terms of speed...
@@ -97,4 +99,47 @@ head(pokemon_WFG) # check
 
 ## You might want to save a copy of this new, truncated dataset for later use:
 write_csv(pokemon_WFG, "./datasets/pokemon_WFG.csv")
+
+
+
+
+
+# Common stats ------------------------------------------------------------------
+
+## You're most likely to use R for its statistical power, so let's have a look at some common stats tests
+
+
+### T-TEST
+
+## In the last part, we looked at the average speed between Gen. 1 and Gen. 2 Pokemon
+## - is the difference between these groups actually statistically significant?
+
+## Let's do a t-test (= testing means between 2 groups) using the objects we created in the last script:
+t.test(pokemon_gen1$Speed, pokemon_gen2$Speed)
+# You'll see the output in the console - the number we're looking for is the p-value...
+
+
+### ANOVA
+
+## Let's say we were interested in more than 2 groups, for example, the difference between the average speed of 
+## water, fire, and grass Pokemon...
+## For this, we'll need an one-way ANOVA (ANalysis Of VAriance) (= testing means between more than 2 groups)
+## and the filtered dataset we created in the last script
+
+# First, compute the ANOVA:
+poke_anova <- aov(Speed ~ Type, data = pokemon_WFG)
+# Then, pull up the analysis summary:
+summary(poke_anova)
+
+## In one-way ANOVA test, a significant p-value indicates that at least of the group means is different to another,
+## (as shown by the asterisk next to the value under Pr(>F) and a score of less than 0.05)
+## but doesn't tell us which ones, so we need another test
+
+## As our ANOVA test was significant, we can compute a Tukey HSD (Tukey Honest Significant Differences)
+## for performing multiple pairwise-comparison between the means of groups:
+TukeyHSD(poke_anova)
+# in the output, look for the "p adj" value...
+
+
+
 

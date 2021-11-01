@@ -1,12 +1,12 @@
 # ******************************************************
 #
-#   R Basics: Getting started in R
+#   R Basics: Getting started in R & RStudio
 #
 #   - E. Dunne 2021
 #
 # ______________________________________________________
 #
-#   4. Starwars example
+#   4. Try it out for yourself using Starwars data!
 #
 # ******************************************************
 
