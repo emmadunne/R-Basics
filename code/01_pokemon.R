@@ -6,7 +6,7 @@
 #
 # ______________________________________________________
 #
-#   1. Exploring and organising the data
+#   1. Importing and manipulating datasets with Pokemon!!
 #
 # ******************************************************
 
