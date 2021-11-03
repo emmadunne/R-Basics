@@ -108,18 +108,20 @@ The other packages you'll need to install to run the code in these scripts are:
 
 #### Top tips:
 
-**1.** R ignores any text preceded by a hash symbol (an octothorp), so you can use this to comment liberally on your code so you can keep track of what you are doing
+**1.** To run a line of code in R, place your cursor on the line and hit Command + Enter (Mac) or Ctrl + Enter (Windows)
 
-**2.** If things get a bit squiffy or you'd just like to start from scratch, you can run this line to clear your environment (i.e. everything that is stored in R):
+**2.** R ignores any text preceded by a hash symbol (an octothorp), so you can use this to comment liberally on your code so you can keep track of what you are doing
+
+**3.** If things get a bit squiffy or you'd just like to start from scratch, you can run this line to clear your environment (i.e. everything that is stored in R):
 ```{r}
 rm(list = ls())
 ```
 
-**3.** R is case-senstive, so be sure to watch your capital and lowercase letters!
+**4.** R is case-senstive, so be sure to watch your capital and lowercase letters!
 
-**4.** For more data manipulation functions in dplyr (part of the tidyverse), check out the cheetsheet by following: Help > Cheatsheets > Data transformation with dplyr
+**5.** For more data manipulation functions in dplyr (part of the tidyverse), check out the cheetsheet by following: Help > Cheatsheets > Data transformation with dplyr
 
-**5.** Use the search function in the Help tab (usually in the bottom right pane in RStudio) to look up any functions you're not sure about. These help files can be difficult to decipher, so Google might be more efficient...
+**6.** Use the search function in the Help tab (usually in the bottom right pane in RStudio) to look up any functions you're not sure about. These help files can be difficult to decipher, so Google might be more efficient...
 
 
 ### 2.1 Importing and exploring datasets
