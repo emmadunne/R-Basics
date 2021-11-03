@@ -20,7 +20,7 @@ The possibilities with R are endless, as is the time we could spend exploring th
 
 
 
-#### 1.1 Install R and RStudio
+### 1.1 Install R and RStudio
 
 
 To get started you will need the following software installed on your computer: [R](https://www.r-project.org) and [RStudio](https://www.rstudio.com), a helpful editor and tool that keeps everything neat:
@@ -49,7 +49,7 @@ You can change the arrangement of these panes as well as pick a colourful theme 
 4. Click _Apply_ then _OK_
 
 
-#### 1.2. Set up a new R Project
+### 1.2. Set up a new R Project
 
 In RStudio, you can [create 'projects'](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects) to help keep everything neat and tidy. This is especially useful if you are working on more than one research project at a time (and perhaps want to use version control), but is still generally good practice for keeping your files, code, etc. organised.
 
@@ -76,7 +76,7 @@ Finally, you'll need to create a empty _plots_ folder. Your project directly sho
 
 
 
-#### 1.3. Installing packages
+### 1.3. Installing packages
 
 R packages are a collection of functions, typically used for a specific purpose, such as phylogenetic analysis, advanced modelling, etc. In this tutorial we're going to mostly use functions from _base R_ (i.e. R without any additional packages), but sometimes we will use coding syntax from a package called _tidyverse_ and will use the graphics package _ggplot2_ to create our plots (which is conveniently included in the _tidyverse_ package). We'll also use some other packages that contain useful functions for making great plots.
 
@@ -99,8 +99,6 @@ The other packages you'll need to install to run the code in these scripts are:
 
 * `RColorBrewer`
 * `gpubr`
-* `palmerpenguins`
-
 
 
 
@@ -108,13 +106,26 @@ The other packages you'll need to install to run the code in these scripts are:
 
 ## Part 2: Let's get coding!
 
+#### Top tips:
 
-#### 2.1 Importing data
+**1.** R ignores any text preceded by a hash symbol (octothorp), so you can use this to comment liberally on your code so you can keep track of what you are doing
 
-For this part, you'll need to open the script file _01_pokemon.R_ in RStudio. There, we'll follow the super simple steps to import our data file.
+**2.** If things get a bit squiffy or you'd just like to start from scratch, you can run this line to clear your environment (i.e. everything that is stored in R):
+```{r}
+rm(list = ls())
+```
+
+**3.**For more data manipulation functions in dplyr (part of the tidyverse), check out the cheetsheet by following: Help > Cheatsheets > Data transformation with dplyr
 
 
-**TIP:** Lines that begin with # are comments. If you run any code that starts with #, R will just ignore that line. Comment on your code script LIBERALLY - I promise you will forget what you were trying to do if you don't take note of it!
+### 2.1 Importing and exploring datasets
+
+For this part, we'll be using the script file _01_pokemon.R_ in RStudio. 
+There, we'll follow the super simple steps to: 
+
+* Import our data file
+* Explore and filter the data
+* Perform some simple statistical analyses
 
 
 Example code (and comments) for importing data:
@@ -122,37 +133,19 @@ Example code (and comments) for importing data:
 # Import the pokemon dataset
 pokemon <- read_csv("./datasets/pokemon.csv")
 
-# Take a peak at the top few lines of the dataset
-head(pokemon)
+# Take a peak at the imported dataset
+glimpse(pokemon)
 ```
 
-#### 2.2 Exploring and manipulating the data
+### 2.2 Plotting data
 
-Using the same script from above, we'll use various base-R and `tidyverse` functions to take a look at the structure and content of our dataset, as well as organise it in a way that best suits what we want to test and plot.
+Next, we can either use the _02_plotting.R_ script (for plotting the Pokemon dataset) or _02_penguins.R_ script) for plotting the Palmer penguins dataset) to practice some plotting in R, using packages, such as `ggplot2` and `gpubr` to get our plots publication-ready. 
 
-**TIP:** A handy place to find lots of useful data manipulation functions is in the cheatsheet: In the menu bar, select _Help > Cheatsheets > Data Transformation with dplyr_
-
-
-#### 2.3 Stats!
-
-Next, we'll use the same script to check out how to do some simple stats tests: t-test and ANOVA.
+In the live tutorial, we'll use _02_penguins.R_ to plot a scatterplot and boxplots, as well as take a brief look at some other ways to explore your data.
 
 
-#### 2.4 Plotting
-
-Finally, we'll use the _02_plotting.R_ script to create two different kinds of plots for continuous data, a scatterplot and boxplots.
-
-
-#### 2.5 Try it out for yourself
+### 2.3 Try it out for yourself
 
 Now it's over to you! Using functions from previous scripts, check out the dataset in _03_starwars.R_ and have a go at exploring these data, doing some simple stats tests and creating plots!
-
-
-## Part 3: Stepping things up a notch
-
-#### 3.1 Palmer penguins
-
-In the _04_penguins.R_ script, we'll explore the Palmer penguins dataset from the  [palmerpenguins](https://allisonhorst.github.io/palmerpenguins/) R package
-
 
 
