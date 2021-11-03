@@ -55,17 +55,15 @@ ggplot(pokemon_WFG, aes(Attack, Defense, colour = Type)) + #(Note how this line 
   scale_color_brewer(palette = "Dark2")
 
 
-## You can also pick your own colours!
+## Let's pick our own colours (Be sure that your colours are friendly for those with colour blindness or other visual impairments!)
 ## Names of R colours can be found here: https://www.nceas.ucsb.edu/sites/default/files/2020-04/colorPaletteCheatsheet.pdf
 ## Or you can use hex codes (see: https://htmlcolorcodes.com/)
-## Be sure that your colours are friendly for those with colour blindness or other visual impairments!
 ggplot(pokemon_WFG, aes(Attack, Defense, colour = Type)) +
   geom_point() +
   scale_color_manual(values = c("#DC267F", "#FFB000", "#648FFF"), guide = guide_legend(title = "Type"))
 
 
-## Now let's tinker with the theme to make it look all professional
-## ggplot has plenty of built-in themes:
+## Now let's change the theme to make it look more publication-ready - ggplot has plenty of built-in themes:
 ggplot(pokemon_WFG, aes(Attack, Defense, colour = Type)) +
   geom_point() +
   scale_color_manual(values = c("#DC267F", "#FFB000", "#648FFF"), guide = guide_legend(title = "Type")) +
@@ -91,7 +89,7 @@ ggplot(pokemon_WFG, aes(Attack, Defense, colour = Type)) +
 ## We can even layer some stats over plots, such as a regression line:
 ggplot(pokemon_WFG, aes(Attack, Defense, colour = Type)) +
   geom_point() +
-  geom_smooth(aes(colour = Type, fill = Type), method = "lm") + 
+  geom_smooth(aes(colour = Type, fill = Type), method = "lm", alpha = 0.3) + 
   scale_color_manual(values = c("#DC267F", "#FFB000", "#648FFF"), guide = guide_legend(title = "Type")) +
   scale_fill_manual(values = c("#DC267F", "#FFB000", "#648FFF"), guide = guide_legend(title = "Type")) +
   mytheme
@@ -101,7 +99,7 @@ ggplot(pokemon_WFG, aes(Attack, Defense, colour = Type)) +
 ## First, we'll need to name our plot:
 poke_scatter <- ggplot(pokemon_WFG, aes(Attack, Defense, colour = Type)) +
   geom_point() +
-  geom_smooth(aes(colour = Type, fill = Type), method = "lm") + 
+  geom_smooth(aes(colour = Type, fill = Type), method = "lm", alpha = 0.3) + 
   scale_color_manual(values = c("#DC267F", "#FFB000", "#648FFF"), guide = guide_legend(title = "Type")) +
   scale_fill_manual(values = c("#DC267F", "#FFB000", "#648FFF"), guide = guide_legend(title = "Type")) +
   mytheme
@@ -158,14 +156,9 @@ poke_boxplot
 ggsave("./plots/boxplot.pdf", plot = poke_boxplot, width = 20, height = 20, units = "cm")
 
 
-## We can also join both of our plots together using the 
-poke_plots <- plot_grid(poke_scatter, poke_boxplot,
-                        nrow = 1, ncol = 2, 
-                        labels = c("(a)", "(b)"))
-poke_plots
 
-## And save:
-ggsave("./plots/Figure_combo.pdf", plot = poke_plots, width = 45, height = 20, units = "cm")
+
+# Plots panel -------------------------------------------------------------
 
 
 ## Combine both plots using the gpubr package

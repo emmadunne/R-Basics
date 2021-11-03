@@ -11,14 +11,11 @@
 # *********************************************************
 
 
-## Hopefully, you'll already have installed the required packages (see Part 1.3 here: https://github.com/emmadunne/R-Basics)
-## Installing a package is like buying a book to place on your shelf. In order to read the book, we need to take it from the shelf, so in terms of a R package, we need to `load` it:
-library(tidyverse)  # for manipulating and organising data - ggplot lies within this collection
+## Before getting started, be sure to follow Part 1 for downloading R/Rstudio and installing packages:
+## https://github.com/emmadunne/R-Basics
 
-
-## Before we begin anything new, it can be useful to clear your environment i.e. delete all of the things that R 'knows'
-## Its also an excellent way to start over if things go really wrong and nothing is running correctly :)
-rm(list = ls())
+## In this tutorial, we'll use the tidyverse, a collection of R packages designed for data science (https://www.tidyverse.org/)
+library(tidyverse)
 
 
 
@@ -38,23 +35,17 @@ View(pokemon)
 
 # Exploring the dataset ---------------------------------------------------
 
-## To explore the data, we'll use a combination of base-R and tidyverse syntax
-## Some people gravitate towards one or the other, but many use a combination depending on what they're doing
-## (I tend to favour tidyverse in this tutorial)
-
 ## How many different pokemon types are there?
-distinct(pokemon, Type_1) # tidyverse
-unique(pokemon$Type_1) # base-R
+distinct(pokemon, Type_1) # tidyverse syntax
+unique(pokemon$Type_1) # base-R syntax - note the $
 
 ## How many pokemon are there?
-length(unique(pokemon$Name)) # base-R
-
+length(unique(pokemon$Name))
 
 ## What's the average...?
-summarise(pokemon, avg = mean(Total)) # tidyverse
-summarise(pokemon, avg = mean(Speed)) # tidyverse
+summarise(pokemon, avg = mean(Total))
+summarise(pokemon, avg = mean(Speed))
 # etc.
-
 
 ## How many pokemon of each type are there?
 count(pokemon, Type_1, sort = TRUE)
@@ -63,8 +54,6 @@ n_types <- count(pokemon, Type_1, sort = TRUE)
 n_types # calls up the object content
 
 
-## For more data manipulation functions in dplyr (part of the tidyverse), check out the cheetsheet by following:
-## Help > Cheatsheets > Data transformation with dplyr
 
 
 
