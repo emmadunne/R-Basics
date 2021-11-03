@@ -162,19 +162,14 @@ ggsave(plot = penguin_plots,
 
 
 
-# Exploring correlations --------------------------------------------------
+
+# Exploring data ----------------------------------------------------------
 
 
-## R has some really powerful tools for exploring your data, for example:
-require("GGally")
+## R is a really powerful tool for exploring your data.
+## Here are some examples using the Palmer penguins data:
 
-penguins %>%
-  select(species, body_mass_g, ends_with("_mm")) %>%
-  GGally::ggpairs(aes(color = species)) +
-  scale_colour_manual(values = c("darkorange","purple","cyan4")) +
-  scale_fill_manual(values = c("darkorange","purple","cyan4"))
-
-## Or even more simple boxplots that can be applied to any dataset:
+## simple boxplots to display counts that can be applied to any dataset:
 penguins %>%
   count(species) %>%
   ggplot() + geom_col(aes(x = species, y = n, fill = species)) +
@@ -182,5 +177,15 @@ penguins %>%
   scale_fill_manual(values = c("darkorange","purple","cyan4")) +
   theme_minimal() +
   labs(title = 'Penguins Species & Count')
+
+
+## Exploring correlations using ggplot plot extension, GGally
+require("GGally")
+penguins %>%
+  select(species, body_mass_g, ends_with("_mm")) %>%
+  GGally::ggpairs(aes(color = species)) +
+  scale_colour_manual(values = c("darkorange","purple","cyan4")) +
+  scale_fill_manual(values = c("darkorange","purple","cyan4"))
+
 
 
