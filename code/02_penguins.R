@@ -135,7 +135,7 @@ ggplot(penguins, aes(x = species, y = body_mass_g)) +
 penguin_box <- ggplot(data = penguins, aes(x = species, y = body_mass_g, colour = species)) +
   #coord_flip() + # flip the plot to be horizontal
   geom_boxplot(color = "gray60", fill = c("#DC267F", "#FFB000", "#648FFF"), alpha = 0.3, lwd = 0.3) +
-  #geom_jitter(aes(color = species), alpha = 0.5, size = 3, position = position_jitter(width = 0.2, seed = 0)) +
+  geom_jitter(aes(color = species), alpha = 0.5, size = 3, position = position_jitter(width = 0.2, seed = 0)) +
   scale_color_manual(values = c("#DC267F", "#FFB000", "#648FFF")) +
   theme_minimal() + theme(legend.position = "none") +
   labs(x = "", y = "Body mass (g)")
@@ -146,7 +146,7 @@ penguin_box
 # Plots panel -------------------------------------------------------------
 
 
-## Combine both plots using the gpubr package
+## Combine both plots using the ggpubr package
 penguin_plots <- ggarrange(penguin_scatter, penguin_box, 
                            common.legend = TRUE, legend = "bottom",
                            labels = c("(a)", "(b)"),
