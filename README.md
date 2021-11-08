@@ -117,7 +117,7 @@ The other packages you'll need to install to run the code in these scripts are:
 rm(list = ls())
 ```
 
-**4.** R is case-senstive, so be sure to watch your capital and lowercase letters!
+**4.** R is case-sensitive, so be sure to watch your capital and lower-case letters!
 
 **5.** For more data manipulation functions in dplyr (part of the tidyverse), check out the cheetsheet by following: Help > Cheatsheets > Data transformation with dplyr
 
@@ -136,7 +136,7 @@ There, we'll follow the super simple steps to:
 
 ### 2.2 Plotting data
 
-Next, we can either use the _02_plotting.R_ script (for plotting the Pokemon dataset) or _02_penguins.R_ script) for plotting the Palmer penguins dataset) to practice some plotting in R, using packages, such as `ggplot2` and `gpubr` to get our plots publication-ready. 
+Next, we can either use the _02_plotting.R_ script (for plotting the Pokemon dataset) or _02_penguins.R_ script (for plotting the Palmer penguins dataset) to practice some plotting in R, using packages, such as `ggplot2` and `gpubr` to get our plots publication-ready. 
 
 In the live tutorial, we'll use _02_penguins.R_ to plot a scatterplot and boxplots, as well as take a brief look at some other ways to explore your data.
 
